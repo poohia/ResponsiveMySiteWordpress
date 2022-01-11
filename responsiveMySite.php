@@ -2,30 +2,34 @@
 require_once( ABSPATH . 'wp-admin/includes/upgrade.php' );
 require(__DIR__.'/api.php');
 require(__DIR__.'/db.php');
+require(__DIR__.'/icons.php');
+require(__DIR__.'/languages/fr.php');
 /*
-Plugin Name: ResponsiveMySite
-Plugin URI: https://joazco.com/
-Description: Ceci est mon premier plugin
-Author: Mon nom et prénom ou celui de ma société
-Version: 1.0
-Author URI: http://joazco.com
+* Plugin Name: ResponsiveMySite
+* Plugin URI: https://joazco.com/
+* Author: JORDAN AZOULAY
+* Text Domain: my-plugin
+* Domain Path: /languages
 */
 define( 'RESPONSIVEMYSITE__PLUGIN_DIR', plugin_dir_path( __FILE__ ) );
 define('DEFAULT_IMAGE_URL', 'https://firebasestorage.googleapis.com/v0/b/responsivemysite-17b70.appspot.com/o/logonotfound.png?alt=media&token=7670638d-aa60-416c-b803-3497e9ed8d77');
+define('RESPONSIVE_MY_SITE__LOCALE', get_bloginfo("language"));
 
 add_action('admin_menu', 'joazco_plugin_responsiveMySite');
+add_action('init', 'register_script');
+add_action('admin_enqueue_scripts', 'enqueue_style');
 register_activation_hook(__FILE__,'responsiveMySite_plugin_table_install');
 register_deactivation_hook(__FILE__, 'joazco_plugin_responsiveMySiteUninstall');
 register_uninstall_hook(__FILE__, 'joazco_plugin_responsiveMySiteUninstall');
 
 
 function joazco_plugin_responsiveMySite(){
-    add_menu_page( 'ResponsiveMySite', 'ResponsiveMySite', 'manage_options', 'joazco-plugin-responsiveMySite', 'init_responsiveMySite', 'dashicons-schedule');
+    add_menu_page( 'ResponsiveMySite', 'ResponsiveMySite', 'manage_options', 'joazco-plugin-responsiveMySite', 'init_responsiveMySite', RESPONSIVEMYSITE__ICON);
 }
  
 function init_responsiveMySite(){
     $webApp = getRow();
-    if ( $_SERVER["REQUEST_METHOD"] == "POST" ){
+    if ( $_SERVER["REQUEST_METHOD"] == "POST" && !$_POST['sentMail']){
         $webApp->name = $_POST['name'];
         $webApp->icon = $_POST['icon'];
         $webApp->statusBarStyle = $_POST['statusBarStyle'] ?? null;
@@ -33,10 +37,13 @@ function init_responsiveMySite(){
         $webApp->splashScreenBackgroundColor = $_POST['splashScreenBackgroundColor'];
         $webApp->splashScreenDelay = intval($_POST['splashScreenDelay']);
         $webApp->orientation = intval($_POST['orientation']);
+        editApi($webApp);
         editTable($webApp);
-        $success = "Bien enregistré";
-    } 
-    
+        $success = "La modification de votre app $webApp->name a bien été enregistrée.";
+    }else if($_SERVER["REQUEST_METHOD"] == "POST"){
+        sendMail(get_bloginfo("admin_email"), $webApp->code, $webApp->name);
+        updateSentEmail();
+    }
     include_once( RESPONSIVEMYSITE__PLUGIN_DIR . '/views/settings.php' );
 }
  
@@ -70,4 +77,18 @@ function joazco_plugin_responsiveMySiteUninstall(){
     delete_option( 'wp_install_uninstall_config' );
 }
 
+function register_script() {
+    load_plugin_textdomain( 'my-plugin', false, 'my-plugin/languages' );
+    // wp_register_script( 'custom_jquery', plugins_url('/js/custom-jquery.js', __FILE__), array('jquery'), '2.5.1' );
+    wp_register_style( 'new_style', plugins_url('/styles/index.css', __FILE__), false, '1.0.0', 'all');
+}
 
+function enqueue_style( $hook ){
+    if(strpos($hook, "joazco-plugin-responsiveMySite") !== false){
+        wp_enqueue_style( 'new_style');
+    }
+ }
+
+function getTranslation($id){
+    echo RESPONSIVE_MY_SITE__LOCALE_FR[$id] ?? "";
+}

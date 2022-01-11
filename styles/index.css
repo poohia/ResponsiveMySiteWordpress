@@ -1,0 +1,110 @@
+@keyframes fadeIn {
+  0% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
+}
+@keyframes zoomIn {
+  from {
+    opacity: 0;
+    transform: scale3d(0.3, 0.3, 0.3);
+  }
+
+  50% {
+    opacity: 1;
+  }
+}
+.responsiveMySite--header {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  animation: fadeIn 5s;
+  -webkit-animation: fadeIn 5s;
+  -moz-animation: fadeIn 5s;
+  -o-animation: fadeIn 5s;
+  -ms-animation: fadeIn 5s;
+}
+.responsiveMySite--header h1 {
+  font-size: 4em;
+  display: flex;
+  align-items: center;
+  color: #2f4657;
+  margin-bottom: 0;
+}
+
+.responsiveMySite--header img {
+  background-color: #2f4657;
+  border-radius: 10px;
+  margin-right: 20px;
+  width: 60px;
+}
+
+.responsiveMySite--container {
+  border: 1px solid #9cadbc;
+  border-radius: 10px;
+  padding: 20px;
+  position: relative;
+  margin-top: 30px;
+}
+.responsiveMySite--container--title {
+  position: absolute;
+  top: -35px;
+  left: 10px;
+  background-color: #f0f0f1;
+  padding-right: 5px;
+  padding-left: 5px;
+  font-size: 1.4rem;
+  color: #009492;
+}
+.responsiveMySite--container--content {
+  font-size: 1.2rem;
+  line-height: 30px;
+}
+#responsiveMySite--form-conf-app {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+}
+.responsiveMySite--form-field {
+  flex-basis: 100%;
+  display: flex;
+  flex-wrap: wrap;
+  padding: 20px;
+  border-bottom: 1px solid #9cadbc;
+}
+.responsiveMySite--form-field.last-child {
+  border-bottom: none;
+}
+.responsiveMySite--form-field h3 {
+  color: #2f4657;
+  flex-basis: 100%;
+  display: flex;
+  align-items: center;
+}
+.responsiveMySite--form-field h3 span {
+  margin-right: 10px;
+}
+.responsiveMySite--form-field .options {
+  flex-basis: 50%;
+  transition: all 0.2s ease-out;
+  -webkit-animation: zoomIn 0.2s ease-in-out 0.2s;
+  animation: zoomIn 0.2s ease-in-out 0.2s;
+  -webkit-animation-fill-mode: both;
+  animation-fill-mode: both;
+}
+.responsiveMySite--form-field .options input,
+.responsiveMySite--form-field .options select {
+  width: 80%;
+  margin-top: 10px;
+}
+.responsiveMySite--form-field .options input[type="number"] {
+  width: auto;
+}
+label.required::after {
+  margin: -0.2em 0 0 0.2em;
+  content: "*";
+  color: #db2828;
+}
