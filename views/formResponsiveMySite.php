@@ -24,7 +24,7 @@
              <p>
                  <label class="required"><?php getTranslation("formfieldnameapp") ?></label>
                  <br />
-                 <input name="name" type="text" name="acme-message" value="<?php echo $webApp->name ?>" required="required" />
+                 <input name="name" maxlength="20" type="text" name="acme-message" value="<?php echo $webApp->name ?>" required="required" />
              </p>
          </div>
          <div class="options">
@@ -51,9 +51,9 @@
                  <label class="required"><?php getTranslation("formfieldadvancedorientation") ?></label>
                  <br />
                  <select name="orientation">
-                     <option <?php if($webApp->orientation === "1") echo "selected='selected'" ?> value="1"><?php getTranslation("optionall") ?></option>
-                     <option <?php if($webApp->orientation === "2") echo "selected='selected'" ?> value="2"><?php getTranslation("optionportrait") ?></option>
-                     <option <?php if($webApp->orientation === "5") echo "selected='selected'" ?> value="5"><?php getTranslation("optionlandscape") ?></option>
+                     <option <?php if(strval($webApp->orientation) === "1") echo "selected='selected'" ?> value="1"><?php getTranslation("optionall") ?></option>
+                     <option <?php if(strval($webApp->orientation) === "2") echo "selected='selected'" ?> value="2"><?php getTranslation("optionportrait") ?></option>
+                     <option <?php if(strval($webApp->orientation) === "5") echo "selected='selected'" ?> value="5"><?php getTranslation("optionlandscape") ?></option>
                  </select>
              </p>
          </div>
