@@ -5,9 +5,9 @@
  * Release: Working copy
  * Locale: fr-FR, French (France)
  * Exported by: joazco
- * Exported at: Tue, 11 Jan 2022 17:59:00 +0100 
+ * Exported at: Tue, 11 Jan 2022 16:55:28 +0100 
  */
-$fr = array (
+$en = array (
   'btncancel' => 'Annuler',
   'btnconfirm' => 'Confirmer',
   'promptaddapptitle' => 'Ajouter une application',
@@ -78,12 +78,5 @@ $fr = array (
   'modalsendoffertitle' => 'Prise de contacte',
   'offlinecomponenttitle' => 'Vous êtes hors connexion',
   'offlinecomponentmessage' => 'Vous devez être connecter pour accéder à {name}',
-  'optionAuto' => 'Auto',
-  'webappsecondes' => 'secondes',
-  'webapptitleplugin' => 'Configuration de l\'app',
-  'webappluginlabel' => 'Vous devez télécharger l\'application ResponsiveMySite sur les stores et renseigné le code de votre application afin de pouvoir l\'a tester',
-  'webapppluginheaderdownloadtitle' => 'Télécharger l\'application mobile',
-  'webapppluginsuccesssentmail' => 'Votre demande de mise en production a bien été enregistré. N\'hésitez pas à contacter par mail en cas de longue attente à',
-  'webapppluginformsuccess' => 'La modification de votre app a bien été enregistrée.',
 );
-define('RESPONSIVE_MY_SITE__LOCALE_FR', $fr);
+define('RESPONSIVE_MY_SITE__LOCALE_EN', $en);

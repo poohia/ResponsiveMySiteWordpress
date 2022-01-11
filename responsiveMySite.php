@@ -4,6 +4,7 @@ require(__DIR__.'/api.php');
 require(__DIR__.'/db.php');
 require(__DIR__.'/icons.php');
 require(__DIR__.'/languages/fr.php');
+require(__DIR__.'/languages/en.php');
 /*
 * Plugin Name: ResponsiveMySite
 * Plugin URI: https://joazco.com/
@@ -39,10 +40,11 @@ function init_responsiveMySite(){
         $webApp->orientation = intval($_POST['orientation']);
         editApi($webApp);
         editTable($webApp);
-        $success = "La modification de votre app $webApp->name a bien été enregistrée.";
+        $success = true;
     }else if($_SERVER["REQUEST_METHOD"] == "POST"){
         sendMail(get_bloginfo("admin_email"), $webApp->code, $webApp->name);
         updateSentEmail();
+        $webApp->sentMail = 1;
     }
     include_once( RESPONSIVEMYSITE__PLUGIN_DIR . '/views/settings.php' );
 }
@@ -90,5 +92,9 @@ function enqueue_style( $hook ){
  }
 
 function getTranslation($id){
-    echo RESPONSIVE_MY_SITE__LOCALE_FR[$id] ?? "";
+    if(strpos(RESPONSIVE_MY_SITE__LOCALE, "fr") !== false){
+        echo RESPONSIVE_MY_SITE__LOCALE_FR[$id] ?? "";
+    }else{
+        echo RESPONSIVE_MY_SITE__LOCALE_EN[$id] ?? "";
+    }
 }
