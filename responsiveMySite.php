@@ -9,8 +9,7 @@ require(__DIR__.'/languages/en.php');
 * Plugin Name: ResponsiveMySite
 * Plugin URI: https://joazco.com/
 * Author: JORDAN AZOULAY
-* Text Domain: my-plugin
-* Domain Path: /languages
+* Description: 
 */
 define( 'RESPONSIVEMYSITE__PLUGIN_DIR', plugin_dir_path( __FILE__ ) );
 define('DEFAULT_IMAGE_URL', 'https://firebasestorage.googleapis.com/v0/b/responsivemysite-17b70.appspot.com/o/logonotfound.png?alt=media&token=7670638d-aa60-416c-b803-3497e9ed8d77');
@@ -38,6 +37,8 @@ function init_responsiveMySite(){
         $webApp->splashScreenBackgroundColor = $_POST['splashScreenBackgroundColor'];
         $webApp->splashScreenDelay = intval($_POST['splashScreenDelay']);
         $webApp->orientation = intval($_POST['orientation']);
+        $webApp->geolocation = intval($_POST['geolocation']);
+        $webApp->notificationPush = intval($_POST['notificationPush']);
         editApi($webApp);
         editTable($webApp);
         $success = true;

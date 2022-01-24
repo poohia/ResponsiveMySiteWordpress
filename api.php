@@ -33,7 +33,9 @@ function sendFirstCreate($url, $name, $color, $icon, $orientation, $openExternal
         'statusBarBackgroundColor' => urlencode($color),
         'splashScreen' => 'true',
         'splashScreenBackgroundColor' => urlencode($color),
-        'splashScreenDelay' => 2
+        'splashScreenDelay' => 2,
+        'geolocation' => 0,
+        'notificationPush' => 0
     ]);
     $finalAPI = ResponsiveMySiteEndpointAPI . ResponsiveMySiteCreateWebApp . $dataFormatted;
     $args = array(
@@ -60,7 +62,9 @@ function editApi($webApp){
         'splashScreenBackgroundColor' => urlencode($webApp->splashScreenBackgroundColor),
         'splashScreenDelay' => $webApp->splashScreenDelay,
         'id' => $webApp->webAppId,
-        'code' => $webApp->webAppCode
+        'code' => $webApp->webAppCode,
+        'geolocation' => $webApp->geolocation,
+        'notificationPush' => $webApp->notificationPush
     ]);
    
     if($webApp->statusBarStyle !== null && $webApp->statusBarStyle !== "auto"){

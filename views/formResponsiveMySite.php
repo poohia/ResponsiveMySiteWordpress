@@ -44,7 +44,7 @@
                  <br />
                 
              </p>
-             <img src="<?php echo $webApp->icon ?>" />
+             <img src="<?php echo $webApp->icon ?>" width="60" height="60" />
          </div>
          <div class="options">
              <p>
@@ -57,7 +57,27 @@
                  </select>
              </p>
          </div>
-</div>
+         <div class="options">
+             <p>
+                 <label class="required"><?php getTranslation("formfieldgeolocation") ?></label>
+                 <br />
+                 <select name="geolocation">
+                    <option <?php if($webApp->geolocation === 1) echo "selected='selected'" ?> value="1"><?php getTranslation("optionyes") ?></option>
+                    <option <?php if($webApp->geolocation === 0) echo "selected='selected'" ?> value="0"><?php getTranslation("optionno") ?></option>
+                 </select>
+             </p>
+         </div>
+         <div class="options">
+             <p>
+                 <label class="required"><?php getTranslation("formfieldnotificationpush") ?></label>
+                 <br />
+                 <select name="notificationPush">
+                    <option <?php if($webApp->notificationPush === 1) echo "selected='selected'" ?> value="1"><?php getTranslation("optionyes") ?></option>
+                    <option <?php if($webApp->notificationPush === 0) echo "selected='selected'" ?> value="0"><?php getTranslation("optionno") ?></option>
+                 </select>
+             </p>
+         </div>
+    </div>
          <div class="responsiveMySite--form-field">
          <h3><span class="dashicons dashicons-admin-appearance"></span> <?php getTranslation("formfieldsectionstatusbar") ?></h3>
          <div class="options">
