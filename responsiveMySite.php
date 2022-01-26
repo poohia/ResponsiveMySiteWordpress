@@ -9,7 +9,7 @@ require(__DIR__.'/languages/en.php');
 * Plugin Name: ResponsiveMySite
 * Plugin URI: https://joazco.com/
 * Author: JORDAN AZOULAY
-* Description: 
+* Description: You want to convert your website into a mobile application while saving time and money? This is it! 
 */
 define( 'RESPONSIVEMYSITE__PLUGIN_DIR', plugin_dir_path( __FILE__ ) );
 define('DEFAULT_IMAGE_URL', 'https://firebasestorage.googleapis.com/v0/b/responsivemysite-17b70.appspot.com/o/logonotfound.png?alt=media&token=7670638d-aa60-416c-b803-3497e9ed8d77');
@@ -47,6 +47,7 @@ function init_responsiveMySite(){
         updateSentEmail();
         $webApp->sentMail = 1;
     }
+    // echo plugin_dir_url(__FILE__);die;
     include_once( RESPONSIVEMYSITE__PLUGIN_DIR . '/views/settings.php' );
 }
  
