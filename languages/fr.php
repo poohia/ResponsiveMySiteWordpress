@@ -97,6 +97,8 @@ Vous venez de tester votre application synchronisée avec votre site web. Rempli
   'screenmessagecreateapp' => 'Création de l\'app {name}',
   'screenmessagemodifyapp' => 'Modification de l\'app {name} ',
   'wordpresstutoinstall' => 'Suite au téléchargement de ce plugin, une application mobile a été créée chez ResponsiveMySite. Pour la tester, rendez vous sur AppStore ou PlayStore pour télécharger l’application ResponsiveMySite et renseigner le code ci-dessous.
-  Si vos tests sont concluants, cliquez sur demander à être contacté pour transformer votre site wordpress en application mobile.'
+  Si vos tests sont concluants, cliquez sur demander à être contacté pour transformer votre site wordpress en application mobile.',
+  'wordpressviewerror' => 'Une erreur est survenue lors de l\'installation du plugin.
+  Pour pouvoir transformer votre site wordpress en application mobile, téléchargez l\'application responsiveMySite et cliquez sur le bouton "+"'
 );
 define('RESPONSIVE_MY_SITE__LOCALE_FR', $fr);

@@ -7,7 +7,7 @@ require(__DIR__.'/languages/fr.php');
 require(__DIR__.'/languages/en.php');
 /*
 * Plugin Name: ResponsiveMySite
-* Plugin URI: https://joazco.com/
+* Plugin URI: https://responsivemysite.app/
 * Author: JORDAN AZOULAY
 * Description: You want to convert your website into a mobile application while saving time and money? This is it! 
 */
@@ -28,27 +28,33 @@ function joazco_plugin_responsiveMySite(){
 }
  
 function init_responsiveMySite(){
-    $webApp = getRow();
-    if ( $_SERVER["REQUEST_METHOD"] == "POST" && !$_POST['sentMail']){
-        $webApp->name = $_POST['name'];
-        $webApp->icon = $_POST['icon'];
-        $webApp->statusBarStyle = $_POST['statusBarStyle'] ?? null;
-        $webApp->statusBarBackgroundColor = $_POST['statusBarBackgroundColor'];
-        $webApp->splashScreenBackgroundColor = $_POST['splashScreenBackgroundColor'];
-        $webApp->splashScreenDelay = intval($_POST['splashScreenDelay']);
-        $webApp->orientation = intval($_POST['orientation']);
-        $webApp->geolocation = intval($_POST['geolocation']);
-        $webApp->notificationPush = intval($_POST['notificationPush']);
-        editApi($webApp);
-        editTable($webApp);
-        $success = true;
-    }else if($_SERVER["REQUEST_METHOD"] == "POST"){
-        sendMail(get_bloginfo("admin_email"), $webApp->code, $webApp->name);
-        updateSentEmail();
-        $webApp->sentMail = 1;
+    try{
+        $webApp = getRow();
+        if ( $_SERVER["REQUEST_METHOD"] == "POST" && !$_POST['sentMail']){
+            $webApp->name = $_POST['name'];
+            $webApp->icon = $_POST['icon'];
+            $webApp->statusBarStyle = $_POST['statusBarStyle'] ?? null;
+            $webApp->statusBarBackgroundColor = $_POST['statusBarBackgroundColor'];
+            $webApp->splashScreenBackgroundColor = $_POST['splashScreenBackgroundColor'];
+            $webApp->splashScreenDelay = intval($_POST['splashScreenDelay']);
+            $webApp->orientation = intval($_POST['orientation']);
+            $webApp->geolocation = intval($_POST['geolocation']);
+            $webApp->notificationPush = intval($_POST['notificationPush']);
+            editApi($webApp);
+            editTable($webApp);
+            $success = true;
+        }else if($_SERVER["REQUEST_METHOD"] == "POST"){
+            sendMail(get_bloginfo("admin_email"), $webApp->code, $webApp->name);
+            updateSentEmail();
+            $webApp->sentMail = 1;
+        }
+        throw new Exception('Division par zéro.'); 
+        include_once( RESPONSIVEMYSITE__PLUGIN_DIR . '/views/settings.php' );
     }
-    // echo plugin_dir_url(__FILE__);die;
-    include_once( RESPONSIVEMYSITE__PLUGIN_DIR . '/views/settings.php' );
+    catch(Exception $e){
+        include_once( RESPONSIVEMYSITE__PLUGIN_DIR . '/views/errorView.php' );
+    }
+    
 }
  
 function responsiveMySite_plugin_table_install() {
