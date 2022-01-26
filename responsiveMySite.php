@@ -88,8 +88,6 @@ function joazco_plugin_responsiveMySiteUninstall(){
 }
 
 function register_script() {
-    load_plugin_textdomain( 'my-plugin', false, 'my-plugin/languages' );
-    // wp_register_script( 'custom_jquery', plugins_url('/js/custom-jquery.js', __FILE__), array('jquery'), '2.5.1' );
     wp_register_style( 'new_style', plugins_url('/styles/index.css', __FILE__), false, '1.0.0', 'all');
 }
 
