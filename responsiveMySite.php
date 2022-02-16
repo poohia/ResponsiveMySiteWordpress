@@ -48,7 +48,6 @@ function init_responsiveMySite(){
             updateSentEmail();
             $webApp->sentMail = 1;
         }
-        throw new Exception('Division par zéro.'); 
         include_once( RESPONSIVEMYSITE__PLUGIN_DIR . '/views/settings.php' );
     }
     catch(Exception $e){

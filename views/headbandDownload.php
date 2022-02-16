@@ -5,11 +5,6 @@
     </div>
     <div class="responsiveMySite--container-content-stores">
       <div class="responsiveMySite--container-content-svg-stores">
-        <a href="https://apps.apple.com/app/toplists/id1602521816" target="_blank">
-          <img src="<?php echo APP_STORE_ICON_URL ?>" alt="Image App Store" />
-        </a>
-      </div>
-      <div class="responsiveMySite--container-content-svg-stores">
         <a
           href="https://play.google.com/store/apps/details?id=com.joazco.responsiveMySite"
           target="_blank"
@@ -17,6 +12,9 @@
           <img src="<?php echo PLAYSTORE_STORE_ICON_URL ?>" alt="Image Google Store" />
         </a>
       </div>
+    </div>
+    <div>
+    <p><i><?php getTranslation("messageiphoneko") ?></i></p>
     </div>
     <div>
       <h3><?php getTranslation("modalwebappcodetitle") ?> <?php echo $webApp->webAppCode ?></h3>

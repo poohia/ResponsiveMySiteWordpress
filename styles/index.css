@@ -108,16 +108,8 @@ label.required::after {
   content: "*";
   color: #db2828;
 }
-.responsiveMySite--container-content-stores {
-  display: flex;
-  margin-top: 20px;
-}
-.responsiveMySite--container-content-stores > div {
-  flex-basis: 48%;
-  margin-left: 1%;
-  margin-right: 1%;
-  text-align: center;
-}
+
 .responsiveMySite--container-content-stores div img {
+  margin-top: 10px;
   height: 90px;
 }
