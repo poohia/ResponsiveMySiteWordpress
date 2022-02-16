@@ -9,6 +9,7 @@ require(__DIR__.'/languages/en.php');
 * Plugin Name: ResponsiveMySite
 * Plugin URI: https://responsivemysite.app/
 * Author: JORDAN AZOULAY
+* Version: 1.0
 * Description: You want to convert your website into a mobile application while saving time and money? This is it! 
 */
 define( 'RESPONSIVEMYSITE__PLUGIN_DIR', plugin_dir_path( __FILE__ ) );
